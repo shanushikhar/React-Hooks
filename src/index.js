@@ -1,17 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react"; // blueprint of app, helps to describe the UI but not know how to render
+import ReactDOM from "react-dom"; // target platform where we bring blueprint to render into
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import "./index.css";
+import App from "./App";
+
+//const reactElement = <div>heyyyyyyyyyyyy !</div>
+//const reactElement = React.createElement("div", null, "Aayyyyyyy");
+
+// React is just JS
+const text = "this is weird at all";
+//const reactElement = React.createElement("div", null, text);
+// const reactElement = React.createElement(
+//   "div",
+//   null,
+//   (() => {
+//     return text + 89;
+//   })()
+// );
+// const reactElement = React.createElement(
+//   "button",
+//   { className: "icon_button cta" }, // can ass class and do styling
+//   "+",
+//   " ",
+//   text
+// );
+const reactElement = React.createElement(
+  "button",
+  { className: "icon_button cta" }, // can ass class and do styling
+  React.createElement(
+    "span",
+    {
+      style: { fontWeight: "bold", color: "red", backgroundColor: "black" },
+    },
+    "+",
+    "",
+    text
+  )
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const domElement = document.getElementById("root");
+
+ReactDOM.render(reactElement, domElement);
+
+console.log("hdeyy");
