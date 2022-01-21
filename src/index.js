@@ -10,6 +10,7 @@ import App from "./App";
 // React is just JS
 const text = "this is weird at all";
 //const reactElement = React.createElement("div", null, text);
+
 // const reactElement = React.createElement(
 //   "div",
 //   null,
@@ -17,6 +18,7 @@ const text = "this is weird at all";
 //     return text + 89;
 //   })()
 // );
+
 // const reactElement = React.createElement(
 //   "button",
 //   { className: "icon_button cta" }, // can ass class and do styling
@@ -24,6 +26,7 @@ const text = "this is weird at all";
 //   " ",
 //   text
 // );
+
 const reactElement = React.createElement(
   "button",
   { className: "icon_button cta" }, // can ass class and do styling
