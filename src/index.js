@@ -3,12 +3,16 @@ import ReactDOM from "react-dom"; // target platform where we bring blueprint to
 
 import "./index.css";
 import App from "./App";
+import { FaHome, FaCartPlus } from "react-icons/fa";
 
 //const reactElement = <div>heyyyyyyyyyyyy !</div>
 //const reactElement = React.createElement("div", null, "Aayyyyyyy");
 
 // React is just JS
 const text = "this is weird at all";
+
+// below are the example of Behind the Hood of JSX
+
 //const reactElement = React.createElement("div", null, text);
 
 // const reactElement = React.createElement(
@@ -27,22 +31,59 @@ const text = "this is weird at all";
 //   text
 // );
 
-const reactElement = React.createElement(
-  "button",
-  { className: "icon_button cta" }, // can ass class and do styling
-  React.createElement(
-    "span",
-    {
-      style: { fontWeight: "bold", color: "red", backgroundColor: "black" },
-    },
-    "+",
-    "",
-    text
-  )
+// const reactElement = React.createElement(
+//   "button",
+//   { className: "icon_button cta" }, // can ass class and do styling
+//   React.createElement(
+//     "span",
+//     {
+//       style: { fontWeight: "bold", color: "red", backgroundColor: "black" },
+//     },
+//     "+",
+//     "",
+//     text
+//   )
+// );
+
+// JSX
+// const reactElement = (
+//   <button className="any class name">
+//     + <span style={{ fontWeight: "bold" }}>{text.toLocaleUpperCase()}</span>
+//   </button>
+// );
+// // style={{ fontWeight: "bold" }} => 1st curly braces means go to js and 2nd is the object
+
+// const domElement = document.getElementById("root");
+// ReactDOM.render(reactElement, domElement);
+
+// Components
+// const reactElement = (
+//   <button className="any class name">
+//     <FaHome /> +
+//     <span style={{}}>
+//       <FaCartPlus />
+//     </span>
+//   </button>
+// );
+// // style={{ fontWeight: "bold" }} => 1st curlly braces means go to js and 2nd is the object
+
+// const Icon = () => reactElement; // defining component for reusability
+
+// const domElement = document.getElementById("root");
+// ReactDOM.render(<Icon />, domElement);
+
+// Re_using Components.....
+const Icon = ({ icon, name }) => (
+  <button className="any class name">
+    {icon} <span style={{}}>{name}</span>
+  </button>
 );
 
 const domElement = document.getElementById("root");
-
-ReactDOM.render(reactElement, domElement);
-
-console.log("hdeyy");
+ReactDOM.render(
+  <div>
+    <Icon icon={<FaHome />} name="Home" /> <br />
+    <Icon icon={<FaCartPlus />} name="Cart" />
+  </div>,
+  domElement
+);
