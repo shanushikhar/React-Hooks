@@ -73,9 +73,16 @@ const text = "this is weird at all";
 // ReactDOM.render(<Icon />, domElement);
 
 // Re_using Components.....
-const Icon = ({ icon, name }) => (
-  <button className="any class name">
-    {icon} <span style={{}}>{name}</span>
+const Icon = ({ icon, name, children, clicked, onMyKeyBoardClicked }) => (
+  <button
+    onKeyDown={(e) => {
+      if (e.key === "Enter" || e.key === " ") onMyKeyBoardClicked();
+    }}
+    onClick={clicked}
+    className="any class name"
+  >
+    {icon} <span>{name}</span>
+    {children}
   </button>
 );
 
@@ -84,6 +91,25 @@ ReactDOM.render(
   <div>
     <Icon icon={<FaHome />} name="Home" /> <br />
     <Icon icon={<FaCartPlus />} name="Cart" />
+    {/* here it is passing by name */}
+    <Icon
+      clicked={() => {
+        console.log("clicked.");
+      }}
+    >
+      HAHAhaha <FaHome />
+      {/* here it is passing by position */}
+    </Icon>
+    <Icon children="oh god" />
+    <br />
+    {/* here it is passing by name */}
+    <Icon
+      onMyKeyBoardClicked={() => {
+        console.log("keyboard clicked");
+      }}
+    >
+      hey keyBoardClick
+    </Icon>
   </div>,
   domElement
 );
