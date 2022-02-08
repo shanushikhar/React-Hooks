@@ -20,6 +20,8 @@ function Minutes() {
     setError(null);
   };
 
+  return <h2>hello</h2>;
+
   return (
     <div>
       <div className="Minutes">
@@ -83,7 +85,7 @@ function useState(initialValue) {
 }
 
 function renderphonyHooks() {
-  callCount = -1;
+  // callCount = -1;
   ReactDOM.render(<Minutes />, document.getElementById("root"));
 }
 renderphonyHooks();
