@@ -1,8 +1,6 @@
-import Counter from "./Counter";
-import UseState from "./useState";
+import React from "react";
+import UseRef from "./UseRef";
 
-function App() {
-  return null;
+export default function App() {
+  return <UseRef />;
 }
-
-export default App;
