@@ -1,7 +1,6 @@
 import React from "react";
-import UseRef from "./UseRef";
-import UseEffect from "./UseEffect";
+import CustomHook from "./Customhook";
 
 export default function App() {
-  return <UseEffect />;
+  return <CustomHook />;
 }
