@@ -1,10 +1,32 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
+/** TODO
+ * put a less than condition for useEffect  => //const first10Char = value.length > 10;
+ * add a drop down to change the value in textinput based from drop down value
+ * after 200 words, should come too long but broke
+ */
 export default function UseRef() {
   const [value, setValue] = useState(" ");
   const [showvalue, setshowValue] = useState(true);
-  // A "Ref"erence of somethng, usually its a DOM element
+
   const messageLengthRef = useRef();
+
+  //const first10Char = value.length > 10;
+  const first10Char = value.substr(0, 10);
+
+  useEffect(() => {
+    console.log("---", value);
+    const span = messageLengthRef.current;
+    span.innerText = value.length;
+
+    document.title = "Post: " + (first10Char ? ` ${first10Char}` : "");
+  }, [first10Char]);
+
+  //   useEffect(() => {
+  //     const span = messageLengthRef.current;
+  //     span.innerText = value.length;
+  //     // document.title = "Facebook (1)";
+  //     document.title = "Post: " + (value ? ` ${value}` : "");
+  //   }, [value]);
 
   let MAX_LENGTH = 200;
 
@@ -15,20 +37,9 @@ export default function UseRef() {
 
   const createBoundry = (e) => {
     if (e.target.value.length < MAX_LENGTH) {
-      // useRef
-      const message = e.target.value;
-      const span = messageLengthRef.current;
-      span.innerText = message.length;
-      // also can put =>  span.innerText = value.length;
-
-      // manually doing with ID
-      //   const message = e.target.value;
-      //   const span = document.getElementById("message-length");
-      //   span.innerText = message.length;
-
       setValue(e.target.value);
     } else {
-      setValue(null);
+      // setValue("");
     }
     setshowValue(false);
   };
@@ -49,10 +60,7 @@ export default function UseRef() {
 
       {value ? (
         <div>
-          {/* doing with Ref */}
           <span ref={messageLengthRef} /> / {MAX_LENGTH}
-          {/* doing with ID */}
-          {/* <span id="message-length" /> / {MAX_LENGTH} */}
         </div>
       ) : (
         <p2>Too long</p2>
