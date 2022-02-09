@@ -1,28 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
 
+function useCustomHook(valToPass, refVal) {
+  useEffect(() => {
+    const span = refVal.current;
+    span.innerText = valToPass.length;
+
+    document.title = valToPass;
+  }, [valToPass]);
+}
+
 export default function UseRef() {
   const [value, setValue] = useState(" ");
   const [showvalue, setshowValue] = useState(true);
 
   const messageLengthRef = useRef();
 
-  //const first10Char = value.length > 10;
   const first10Char = value.substr(0, 10);
 
-  useEffect(() => {
-    console.log("---", value);
-    const span = messageLengthRef.current;
-    span.innerText = value.length;
-
-    document.title = "Post: " + (first10Char ? ` ${first10Char}` : "");
-  }, [first10Char]);
-
-  //   useEffect(() => {
-  //     const span = messageLengthRef.current;
-  //     span.innerText = value.length;
-  //     // document.title = "Facebook (1)";
-  //     document.title = "Post: " + (value ? ` ${value}` : "");
-  //   }, [value]);
+  useCustomHook(
+    "Post: " + (first10Char ? ` ${first10Char}` : ""),
+    messageLengthRef
+  );
 
   let MAX_LENGTH = 200;
 
