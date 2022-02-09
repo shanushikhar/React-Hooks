@@ -1,9 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-/** TODO
- * put a less than condition for useEffect  => //const first10Char = value.length > 10;
- * add a drop down to change the value in textinput based from drop down value
- * after 200 words, should come too long but broke
- */
+
 export default function UseRef() {
   const [value, setValue] = useState(" ");
   const [showvalue, setshowValue] = useState(true);
