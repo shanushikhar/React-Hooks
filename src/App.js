@@ -1,8 +1,16 @@
-import Counter from "./Counter";
-import UseState from "./useState";
+import React, { useState } from "react";
 
-function App() {
-  return null;
+export default function App() {
+  const [counter, setCounter] = useState(0);
+
+  let increment = () => {
+    setCounter(counter + 1);
+  };
+
+  return (
+    <div>
+      {counter}
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
 }
-
-export default App;
