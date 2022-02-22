@@ -1,6 +1,16 @@
-import React from "react";
-import CustomHook from "./Customhook";
+import React, { useState } from "react";
 
 export default function App() {
-  return <CustomHook />;
+  const [counter, setCounter] = useState(0);
+
+  let increment = () => {
+    setCounter(counter + 1);
+  };
+
+  return (
+    <div>
+      {counter}
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
 }
