@@ -1,16 +1,21 @@
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useRef } from "react";
 
 export default function App() {
-  const [data, setData] = useState("");
+  const inputRef = useRef(null);
 
-  useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      //console.log("hi ", res.data);
-      setData(res.data);
-    });
-  }, []);
+  const onClick = () => {
+    // inputRef.current.placeholder = "hoho";
+    // inputRef.current.focus(); // to Focus
+    inputRef.current.value = ""; // to clear the field value
+  };
 
-  return <div>{data && data[0].name}</div>;
+  return (
+    <div>
+      <h1>useRef</h1>
+      <input ref={inputRef} type="text" placeholder="say something..." />
+      <button onClick={onClick}>Change Name / focus input field</button>
+    </div>
+  );
+
 }
