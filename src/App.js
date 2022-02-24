@@ -1,16 +1,15 @@
-import React, { useRef } from "react";
-import Button from "./Button";
+import React, { useRef, useState, createContext } from "react";
+import Login from "./Login";
+import User from "./User";
 
-// reusable components that needs to invoke from outside like parent component
+export const AppContext = createContext(null);
 
 export default function App() {
-  const buttonRef = useRef(null);
+  const [username, setUserName] = useState(null);
   return (
-    <div>
-      <button onClick={() => buttonRef.current.doToggle()}>
-        Button From Parent
-      </button>
-      <Button ref={buttonRef} />
-    </div>
+    <AppContext.Provider value={{ username, setUserName }}>
+      <Login />
+      <User />
+    </AppContext.Provider>
   );
 }
