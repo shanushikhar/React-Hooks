@@ -1,6 +1,6 @@
-# TODO
+# Consists
 
-## left works
+## left works ( all done)
 
-- when start typing the words and removed it all then it broke
-- count val is 8, make it to default
+- Covered all hooks prior to React
+- more to come in future :)
